@@ -3,6 +3,7 @@ package com.example.myapplication;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Parcelable;
@@ -12,6 +13,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -33,6 +35,8 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QuerySnapshot;
 
+import java.util.Calendar;
+
 public class MainActivity extends AppCompatActivity {
 
     private FirebaseAuth auth;
@@ -45,19 +49,20 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        overridePendingTransition(0,0);
         auth=FirebaseAuth.getInstance();
        // db=FirebaseFirestore.getInstance();//
 
         final EditText email=(EditText)findViewById(R.id.email);
         final EditText pass=(EditText)findViewById(R.id.pass);
         Button sign_in=(Button)findViewById(R.id.signin);
-        Button register=(Button)findViewById(R.id.register);
-        Button forget_pass=(Button)findViewById(R.id.forget);
+        TextView register=(TextView)findViewById(R.id.register);
+        TextView forget_pass=(TextView)findViewById(R.id.forget);
 
 
 
 
-            sign_in.setOnClickListener(new View.OnClickListener() {
+           sign_in.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                // final String Email=email.getText().toString().trim();
@@ -93,7 +98,10 @@ public class MainActivity extends AppCompatActivity {
                             {
 
                                 Intent i=new Intent(MainActivity.this,Activity2.class);
-                                i.putExtra("emailt", Email);
+                                SharedPreferences sharedPreferences = getSharedPreferences("data",0);
+                                SharedPreferences.Editor editor = sharedPreferences.edit();
+                                editor.putString("email",Email);
+                                editor.commit();
                                 startActivity(i);
                             }
 
@@ -104,12 +112,12 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-/*
-      sign_in.setOnClickListener(new View.OnClickListener() {
+
+   /*   sign_in.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                Intent intent = new Intent(MainActivity.this,Attendance.class);
+                Intent intent = new Intent(MainActivity.this,Activity2.class);
                 startActivity(intent);
             }
         });*/

@@ -6,6 +6,7 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlarmManager;
+import android.app.DatePickerDialog;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
@@ -26,6 +27,7 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.Calendar;
+import java.util.Locale;
 
 public class Add_event extends AppCompatActivity {
     private FirebaseAuth auth;
@@ -47,8 +49,8 @@ public class Add_event extends AppCompatActivity {
         final TimePicker tt=(TimePicker)findViewById(R.id.time);
         final DatePicker date=(DatePicker)findViewById(R.id.date) ;
 
-
-        save.setOnClickListener(new View.OnClickListener() {
+        save.setOnClickListener(new View.OnClickListener()
+        {
             @Override
             public void onClick(final View view) {
                 String eventt=event_name.getText().toString().trim();
@@ -67,7 +69,7 @@ public class Add_event extends AppCompatActivity {
                 Integer year=date.getYear();
                 String datet=day.toString()+"-"+month1.toString()+"-"+year.toString();
 
-                final DocumentReference noteRef=db.collection("Event").document("topict");
+
                 if(eventt.isEmpty())
                 {
                     event_name.requestFocus();
@@ -100,6 +102,7 @@ public class Add_event extends AppCompatActivity {
                 }
                 else
                 {
+                    final DocumentReference noteRef=db.collection("Event").document(topict);
                     Record2 record=new Record2( eventt,topict,conductort,venuet,datet,timet,desct);
                     //noteRef.set(record);
 
@@ -108,8 +111,6 @@ public class Add_event extends AppCompatActivity {
                         public void onSuccess(Void aVoid)
                         {
                             //    Toast.makeText(Add_event.this, "Event Information is store Successfully", Toast.LENGTH_SHORT).show();
-
-
 
                         }
                     }).addOnFailureListener(new OnFailureListener()
@@ -120,6 +121,8 @@ public class Add_event extends AppCompatActivity {
                             Toast.makeText(Add_event.this, "Failed to store Event Information", Toast.LENGTH_SHORT).show();
                             Intent in =new Intent(Add_event.this,EventActivity.class);
                             startActivity(in);
+                            overridePendingTransition(0, 0);
+
                         }
                     });
                     Toast.makeText(Add_event.this, "Registration Successful...", Toast.LENGTH_SHORT).show();
@@ -128,6 +131,11 @@ public class Add_event extends AppCompatActivity {
 
                     i.putExtra("Topic",topict);
                     i.putExtra("Venue",venuet);
+                    i.putExtra("name",eventt);
+                    i.putExtra("organiser",conductort);
+                    i.putExtra("time",timet);
+                    i.putExtra("description",desct);
+
 
                     PendingIntent alarmintent=PendingIntent.getBroadcast(Add_event.this,1,i,0);
 
@@ -149,8 +157,13 @@ public class Add_event extends AppCompatActivity {
                     AlarmManager alarm=(AlarmManager)getSystemService(Context.ALARM_SERVICE);
                     long alarmStartTime=startTime.getTimeInMillis();
                     alarm.setExact(AlarmManager.RTC_WAKEUP,alarmStartTime,alarmintent);
+
+
                     Intent in =new Intent(Add_event.this,EventActivity.class);
                     startActivity(in);
+                    overridePendingTransition(0, 0);
+
+
                 }
             }
         });

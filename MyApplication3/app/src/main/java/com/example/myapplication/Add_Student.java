@@ -104,7 +104,7 @@ public class Add_Student extends AppCompatActivity {
                     Toast.makeText(Add_Student.this, "Registration Successful...", Toast.LENGTH_SHORT).show();
                     Intent i =new Intent(Add_Student.this,Attendance.class);
                     startActivity(i);
-
+                    overridePendingTransition(0,0);
 
 
                 }

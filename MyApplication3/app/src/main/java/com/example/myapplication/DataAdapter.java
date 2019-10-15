@@ -1,5 +1,6 @@
 package com.example.myapplication;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -51,6 +52,8 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.ViewHolder>
         holder.venue.setText(record2List.get(position).getVenuet());
         holder.time.setText(record2List.get(position).getTimet());
         holder.date.setText(record2List.get(position).getDatet());
+        EventActivity e=new EventActivity();
+
     }
 
 

@@ -1,22 +1,41 @@
 package com.example.myapplication;
 
-class Record4
+public class Record4
 {
+    String Name;
+    String Notice;
 
-    String avg;
-    Record4()
-    {}
 
-    public Record4(String avg)
+    private Record4(){}
+    public Record4(String name, String notice,String time)
     {
-
-    }
-    public String getAvg() {
-        return avg;
-    }
-
-    public void setAvg(String avg) {
-        this.avg = avg;
+        this.Name = name;
+        this.Notice = notice;
+        this.time=time;
     }
 
+    public String getName() {
+        return Name;
+    }
+
+    public void setName(String name) {
+        Name = name;
+    }
+
+    public String getNotice() {
+        return Notice;
+    }
+
+    public void setNotice(String notice) {
+        Notice = notice;
+    }
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
+    }
+
+    String time;
 }

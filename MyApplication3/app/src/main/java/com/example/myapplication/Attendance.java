@@ -33,13 +33,15 @@ public class Attendance extends AppCompatActivity
         db=FirebaseFirestore.getInstance();
 
         Button profile=(Button)findViewById(R.id.student_Profile);
-        Button add=(Button)findViewById(R.id.add_student);
+        Button back=(Button)findViewById(R.id.back);
         Button get_att=(Button)findViewById(R.id.get_att);
-        add.setOnClickListener(new View.OnClickListener() {
+        Button add_notice=(Button)findViewById(R.id.att_notice_add);
+        back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               Intent i=new Intent(Attendance.this,Add_Student.class);
+               Intent i=new Intent(Attendance.this,Activity2.class);
                startActivity(i);
+               overridePendingTransition(0,0);
             }
         });
         profile.setOnClickListener(new View.OnClickListener() {
@@ -47,6 +49,8 @@ public class Attendance extends AppCompatActivity
             public void onClick(View view) {
                 Intent i=new Intent(Attendance.this,All_student_profile.class);
                 startActivity(i);
+                overridePendingTransition(0, 0);
+
             }
         });
         get_att.setOnClickListener(new View.OnClickListener() {
@@ -54,6 +58,17 @@ public class Attendance extends AppCompatActivity
             public void onClick(View view) {
                 Intent i=new Intent(Attendance.this,Get_Attendance.class);
                 startActivity(i);
+                overridePendingTransition(0, 0);
+
+            }
+        });
+        add_notice.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i=new Intent(Attendance.this,Add_notice.class);
+                startActivity(i);
+                overridePendingTransition(0, 0);
+
             }
         });
     }

@@ -4,7 +4,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.google.firebase.firestore.DocumentChange;
@@ -33,6 +36,7 @@ public class All_student_profile extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        Button back=(Button)findViewById(R.id.back);
         userlist=new ArrayList<>();
         mdataAdapter=new DataAdapter2(userlist);
         setContentView(R.layout.activity_all_student_profile);
@@ -58,7 +62,8 @@ public class All_student_profile extends AppCompatActivity {
                     {
                         final Record3 rec=dc.getDocument().toObject(Record3.class);
                         db.collection("Attendance")
-                                .addSnapshotListener(new EventListener<QuerySnapshot>() {
+                                .addSnapshotListener(new EventListener<QuerySnapshot>()
+                                {
                                     @Override
                                     public void onEvent(@Nullable QuerySnapshot queryDocumentSnapshots, @Nullable FirebaseFirestoreException e) {
                                         Double sum = 0.0;
@@ -85,9 +90,11 @@ public class All_student_profile extends AppCompatActivity {
                                         mdataAdapter.notifyDataSetChanged();
                                     }
                                 });
+
                     }
                 }
             }
         });
+
     }
 }

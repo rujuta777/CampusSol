@@ -18,11 +18,17 @@ public class AlarmReceiver extends BroadcastReceiver
     @Override
     public void onReceive(Context context, Intent intent)
     {
-        Toast.makeText(context, "AlarmReceiver class ..", Toast.LENGTH_SHORT).show();
-        String topic, venue;
+      //  Toast.makeText(context, "AlarmReceiver class ..", Toast.LENGTH_SHORT).show();
+        String topic, venue,cond,time,desc,name;
         topic = intent.getStringExtra("Topic");
         venue = intent.getStringExtra("Venue");
-        NotificationHelper notificationHelper = new NotificationHelper(context, topic, venue);
+        cond= intent.getStringExtra("organiser");
+        time= intent.getStringExtra("time");
+        desc = intent.getStringExtra("description");
+        name=intent.getStringExtra("name");
+
+
+        NotificationHelper notificationHelper = new NotificationHelper(context, topic, venue,cond,time,desc,name);
         NotificationCompat.Builder nb = notificationHelper.getChannelNotification();
         notificationHelper.getManager().notify(1, nb.build());
 

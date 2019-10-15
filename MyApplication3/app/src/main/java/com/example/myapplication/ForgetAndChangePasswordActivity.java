@@ -29,15 +29,22 @@ public class ForgetAndChangePasswordActivity extends AppCompatActivity {
         Button Pass=(Button)findViewById(R.id.pass);
         Button back=(Button)findViewById(R.id.back);
         auth=FirebaseAuth.getInstance();
-        Pass.setOnClickListener(new View.OnClickListener() {
+        Pass.setOnClickListener(new View.OnClickListener()
+        {
             @Override
             public void onClick(View view) {
                 String email=user_email.getText().toString().trim();
-                auth.sendPasswordResetEmail(email).addOnCompleteListener(new OnCompleteListener<Void>() {
+                auth.sendPasswordResetEmail(email).addOnCompleteListener(new OnCompleteListener<Void>()
+                {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
-                        if(task.isSuccessful()){
+                        if(task.isSuccessful())
+                        {
                             Toast.makeText(ForgetAndChangePasswordActivity.this, "Password reset link sent to your registered mail...", Toast.LENGTH_SHORT).show();
+                            Intent i=new Intent(ForgetAndChangePasswordActivity.this,MainActivity.class);
+                            startActivity(i);
+                            overridePendingTransition(0, 0);
+
                         }
                         else{
                             Toast.makeText(ForgetAndChangePasswordActivity.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
@@ -45,13 +52,9 @@ public class ForgetAndChangePasswordActivity extends AppCompatActivity {
                     }
                 });
             }
+
         });
-        back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(ForgetAndChangePasswordActivity.this, MainActivity.class));
-            }
-        });
+
 
     }
 }

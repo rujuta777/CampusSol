@@ -50,17 +50,13 @@
     <string name="a31452"></string>
     <string name="a31453"></string>
     <string name="a31454"></string>
-    <string-array name="Colour">
-        <item> red</item>
-        <item>blue</item>
-        <item>Green</item>
-        <item>White</item>
-        <item>Black</item>
-        <item>Yellow</item>
-        <item>Brown</item>
-        <item>Grey</item>
-        <item>Orange</item>
-        <item>Voilet</item>
-        <item>Pink</item>
-    </string-array>
+    <string name="place"></string>
+    <string name="description"></string>
+    <string name="time1"></string>
+    <string name="date1"></string>
+    <string name="color"></string>
+    <string name="no"></string>
+    <string name="object"></string>
+
+
 </resources>

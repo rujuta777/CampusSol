@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.method.CharacterPickerDialog;
 import android.view.View;
@@ -107,8 +108,10 @@ public class Get_Attendance extends AppCompatActivity {
                 docref.set(attend);
                 docref.set(attend).addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
-                    public void onSuccess(Void aVoid) {
+                    public void onSuccess(Void aVoid)
+                    {
                         Toast.makeText(Get_Attendance.this, "Attendance Stored Successfully...", Toast.LENGTH_SHORT).show();
+
                     }
                 }).addOnFailureListener(new OnFailureListener() {
                     @Override
@@ -116,8 +119,13 @@ public class Get_Attendance extends AppCompatActivity {
                         Toast.makeText(Get_Attendance.this, "Failed To Store Attendance", Toast.LENGTH_SHORT).show();
                     }
                 });
+                Intent i=new Intent(Get_Attendance.this,MainActivity.class);
+                startActivity(i);
+                overridePendingTransition(0, 0);
+
             }
         });
+
 
     }
 

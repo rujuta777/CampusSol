@@ -3,12 +3,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:background="@drawable/back"
+    android:layout_height="wrap_content"
     tools:context=".Add_event">
+
     <LinearLayout
         android:orientation="vertical"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent">
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
         <EditText
             android:id="@+id/name"
             android:layout_width="342dp"
@@ -16,10 +19,11 @@
             android:layout_marginStart="8dp"
             android:layout_marginLeft="8dp"
             android:layout_marginTop="8dp"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
             android:layout_marginEnd="8dp"
             android:layout_marginRight="8dp"
             android:layout_marginBottom="8dp"
-            android:ems="10"
             android:hint="@string/event_name"
             android:inputType="textPersonName"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -40,6 +44,8 @@
             android:layout_marginRight="8dp"
             android:layout_marginBottom="8dp"
             android:ems="10"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
             android:hint="@string/topic"
             android:inputType="textShortMessage"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -59,7 +65,9 @@
             android:layout_marginRight="8dp"
             android:layout_marginBottom="8dp"
             android:ems="10"
-            android:hint="@string/conduct"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            android:hint="ORGANISER"
             android:inputType="textPersonName|text|textEmailAddress"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -76,7 +84,9 @@
             android:layout_marginEnd="8dp"
             android:layout_marginRight="8dp"
             android:ems="10"
+            android:textColor="@color/white"
             android:hint="@string/venue"
+            android:textColorHint="@color/white"
             android:inputType="text"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -90,10 +100,16 @@
             android:layout_marginTop="25dp"
             android:layout_marginBottom="1dp"
             android:datePickerMode="calendar"
+            android:calendarTextColor="@color/gray"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0">
+            app:layout_constraintVertical_bias="0.0"
+            android:textColor="@color/white"
+            android:dayOfWeekBackground="@color/white"
+            android:yearListSelectorColor="@color/blue"
+            android:textColorHint="@color/white"
+            android:calendarViewShown="false">
 
         </DatePicker>
 
@@ -101,18 +117,23 @@
             android:id="@+id/time"
             android:layout_width="wrap_content"
             android:layout_height="250dp"
+
             android:layout_marginStart="1dp"
             android:layout_marginLeft="40dp"
+            android:textColorHint="@color/white"
             android:layout_marginEnd="10dp"
             android:layout_marginRight="8dp"
             android:minHeight="50dp"
+            android:numbersInnerTextColor="@color/white"
             android:timePickerMode="spinner"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/save_but"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.909">
+            app:layout_constraintVertical_bias="0.909"
+            android:textColor="@color/white"
+        >
 
         </TimePicker>
 
@@ -122,7 +143,9 @@
             android:layout_height="90dp"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="8dp"
+            android:textColorHint="@color/white"
             android:ems="10"
+            android:textColor="@color/white"
             android:gravity="start|top"
             android:hint="@string/desc"
             android:inputType="textMultiLine"
@@ -143,9 +166,11 @@
             android:layout_marginLeft="298dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
+            android:textColorHint="@color/white"
             android:layout_marginRight="8dp"
             android:layout_marginBottom="16dp"
             android:maxHeight="200dp"
+            android:textColor="@color/white"
             android:background="@drawable/ic_check_black_24dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
